@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+     <style type="text/css">
+        #our-team{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
+            background: #262626;
+
+        }
+        .testimonials{
+            margin: 50px auto 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-gap: 20px;
+
+
+        }
+        .testimonials .card{
+            position: relative;
+            width: 350px;
+            margin: 0 auto;
+            background: #333;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,.5);
+            overflow: hidden;
+        }
+        .testimonial .card .layer{
+            position: absolute;
+            top: calc(100% - 2px);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(#03a9f4, #e91ee3);
+            z-index: 1;
+            transition: 0.5s; 
+        }
+        .testimonials .card:hover .layer
+        {
+            top: 0;
+        }
+        .testimonials .card .content
+        {   
+            position: relative;
+            z-index: 2;
+
+        }
+        .testimonials .card .content p
+        {
+            font-size: 18px;
+            line-height: 24px;
+            color: #fff;
+        }
+        .testimonials .card .content .image
+        {  
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 40px rgba(0,0,0,.2);
+        }
+        .testimonials .card .content .details h2
+        {
+            font-size: 18px;
+            color: #fff;
+        }
+        .testimonials .card .content p span
+        {
+            color: #03a9f4;
+            font-size: 20px;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="our-team">
+    <center><h1 style="color: #fff;">Learn from the best Trainers</h1></center>
+    <div class="testimonials">
+        <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span> Rajinder Chitoria<br></span><br>Professional with over 14 years of career reflecting Corporate Training qualifications and hands-on experience in Microsoft Technologies. Also good in Data Analytics Tools like SAS, Big Data & Hadoop and Adv. Excel etc.<br>
+ </p>
+                    <div class="image">
+                        <img src="photos/person-man.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2>-->Specialization : Big Data & Hadoop, SAS, R, Python, MS Excel<hr><br>
+ -->Trained more than 5000+ students on MS Excel & VBA<hr><br>
+ -->Companies worked with : HCL, NIIT, IBM, Tata AIG, CSC, BHEL, AIRmanORCE, INDIAN NAVY, INDIAN ARMY<br></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span>Monica Gupta<br></span><br>A result oriented professional, 17 + years overall experience in Management and Corporate Training. Presently working as a Technical Consultant Corporate, for Training, E-Learning Material Development, Software Development and Project Management.</p>
+                    <div class="image">
+                        <img src="photos/person-female.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2>--> Specialization : MS Excel & VBA.<br> 
+ <br>-->Trained more than 3000+ students on MS Excel & VBA <br>
+<br>-->Companies worked with : HCL, NIIT, I.E.&T, Guwahati , Mahindra Comviva , Orange , AON</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span>Ashman Malhotra<br></span><br>Accomplished, motivated and versatile IT professional; Web Administrator, PHP, PHP7, MySql, .NET software developer, Python, support analyst and Occasional Lecturer with 10 years of experience in the IT industry. </p>
+                    <div class="image">
+                        <img src="photos/person-man.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2><br>-->Specialization : Python, PHP<hr>
+ <br>-->Trained more than 3000+ students on MS Excel & VBA <hr>
+ <br>-->Companies worked with : IBM, Gurgaon, HCL - Noida, CDAC - Delhi</h2>
+                    </div>
+                </div>
+            </div> 
+         
+    </div>
+
+    <div class="testimonials">
+        <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span> M.A.KHAN<br></span><br>A technically sophisticated professional with over 14 years of career reflecting Corporate Training qualifications and hands-on experience in Software Development. <br>
+ </p>
+                    <div class="image">
+                        <img src="photos/person-man.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2>-->Specialization :Java Programming and PHP Based Web Development<hr><br>
+ -->Trained more than 3000 corporate employees and college students 
+<br>
+ </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span>B. KUMAR<br></span><br>Senior professional on Cloud Computing, Big DATA, IOT(Internet of Things) , 11 + years overall experience in IOT and Embedded System Consulting. Has development more 20 industrial projects for corporate on IoT with Embedded Systems </p>
+                    <div class="image">
+                        <img src="photos/person-man.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2>--> Specialization :  IoT, Embedded Systems<br> 
+ <br>-->Trained more than 2000 college students on IoT & Embedded <br>
+ </span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+            <div class="layer"></div>
+                <div class="content">
+                    <p><span>SUJAN K DEB<br></span><br>Qualified Technical Professional With 10 Years Of IT Consulting With Strong Expertise in Corporate Training, Consulting System Integration & Security and Training Manager.  </p>
+                    <div class="image">
+                        <img src="photos/person-man.png" , alt=" " width="100px", height="100px">
+                    </div>
+                    <div class="details">
+                        <h2><br>-->Specialization : CompTIA, CCNA, Microsoft<hr>
+ <br>-->Taken 150+ batches and trained 1500+ students on CCNA(R&S), Information Security, Windows Server 2012 & Hyper-V Virtualization. 
+  </h2>
+                    </div>
+                </div>
+            </div> 
+         
+    </div>
+</div>
+</body>

@@ -1,0 +1,348 @@
+"use strict";
+
+
+jQuery(document).ready(function ($) {
+
+
+    /*---------------------------------------------*
+     * Mobile menu
+     ---------------------------------------------*/
+    $('#navbar-collapse').find('a[href*=#]:not([href=#])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: (target.offset().top - 40)
+                }, 1000);
+                if ($('.navbar-toggle').css('display') != 'none') {
+                    $(this).parents('.container').find(".navbar-toggle").trigger("click");
+                }
+                return false;
+            }
+        }
+    });
+
+
+
+    /*---------------------------------------------*
+     * STICKY scroll
+     ---------------------------------------------*/
+
+    $.localScroll();
+
+
+
+    /*---------------------------------------------*
+     * WOW
+     ---------------------------------------------*/
+
+    var wow = new WOW({
+        mobile: false // trigger animations on mobile devices (default is true)
+    });
+    wow.init();
+
+
+    /* ---------------------------------------------------------------------
+     Carousel
+     ---------------------------------------------------------------------= */
+
+    $('.main_home_content').owlCarousel({
+        responsiveClass: true,
+        autoplay: false,
+        items: 1,
+        loop: true,
+        dots: true,
+        nav: false,
+        navText: [
+            "<i class='lnr lnr-chevron-left'></i>",
+            "<i class='lnr lnr-chevron-right'></i>"
+        ],
+        autoplayHoverPause: true
+
+    });
+
+    $('.main_testimonial_content').owlCarousel({
+        responsiveClass: true,
+        autoplay: false,
+        items: 1,
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "<i class='lnr lnr-chevron-left'></i>",
+            "<i class='lnr lnr-chevron-right'></i>"
+        ],
+        autoplayHoverPause: true
+
+    });
+
+
+
+
+// main-menu-scroll
+
+    jQuery(window).scroll(function () {
+        var top = jQuery(document).scrollTop();
+        var height = 300;
+        //alert(batas);
+
+        if (top > height) {
+            jQuery('.navbar-fixed-top').addClass('menu-scroll');
+        } else {
+            jQuery('.navbar-fixed-top').removeClass('menu-scroll');
+        }
+    });
+
+// scroll Up
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            $('.scrollup').fadeIn('slow');
+        } else {
+            $('.scrollup').fadeOut('slow');
+        }
+    });
+    $('.scrollup').click(function () {
+        $("html, body").animate({scrollTop: 0}, 1000);
+        return false;
+    });
+
+
+
+//    $('#menu').slicknav();
+
+
+
+
+
+
+
+
+    //End
+});
+
+
+
+
+$(document).on("scroll", function () {
+    if ($(document).scrollTop() > 120) {
+        $("nav").addClass("small");
+    } else {
+        $("nav").removeClass("small");
+    }
+});
+
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+
+
+function SendMail()
+{
+	//alert("Hi");
+	var FullName=document.getElementById("FullName").value;
+	var EmailId=document.getElementById("EmailAddress").value;
+	var Mobile=document.getElementById("MobileNumber").value;
+	var Message=document.getElementById("Message").value;
+	var F=true;
+	if(FullName==null || FullName=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Name!',
+		});
+		F=false;
+	}
+	else if(EmailId==null || EmailId=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Email Id!',
+		});
+		F=false;
+	}
+	else if(ValEmail(EmailId)==false)
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter a valid Email Id!',
+		});
+		F=false;
+	}
+	else if(Mobile==null || Mobile=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Mobile Number!',
+		});
+		F=false;
+	}
+	else if(Mobile.length<10 || isNaN(Mobile))
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter a Valid Mobile Number!',
+		});
+		F=false;
+	}
+	else if(Message==null || Message=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Message!',
+		});
+		F=false;
+	}
+	if(F==true)
+	{
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if (this.readyState == 4 && this.status == 200)
+		{
+			var retData = this.responseText;
+			swal({
+			  type: 'success',
+			  title: 'Your mail has been sent.',
+			  showConfirmButton: false,
+			  timer: 3000
+			});
+			document.getElementById("FullName").value="";
+			document.getElementById("EmailAddress").value="";
+			document.getElementById("MobileNumber").value="";
+			document.getElementById("Message").value="";
+		}
+	};
+	xhttp.open("POST", "Code/mailer.php", true);
+	xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xhttp.send("FullName="+FullName+"&EmailAddress="+EmailId+"&MobileNumber="+Mobile+"&Message="+Message);
+	xhttp.send();
+	}
+}
+
+function SendMailContat()
+{
+	//alert("Hi");
+	var FullName=document.getElementById("FullNameC").value;
+	var EmailId=document.getElementById("EmailAddressC").value;
+	var Mobile=document.getElementById("MobileNumberC").value;
+	var Message=document.getElementById("MessageC").value;
+	var F=true;
+	if(FullName==null || FullName=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Name!',
+		});
+		F=false;
+	}
+	else if(EmailId==null || EmailId=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Email Id!',
+		});
+		F=false;
+	}
+	else if(ValEmail(EmailId)==false)
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter a valid Email Id!',
+		});
+		F=false;
+	}
+	else if(Mobile==null || Mobile=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Mobile Number!',
+		});
+		F=false;
+	}
+	else if(Mobile.length<10 || isNaN(Mobile))
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter a Valid Mobile Number!',
+		});
+		F=false;
+	}
+	else if(Message==null || Message=="")
+	{
+		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: 'Enter Your Message!',
+		});
+		F=false;
+	}
+	if(F==true)
+	{
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if (this.readyState == 4 && this.status == 200)
+		{
+			var retData = this.responseText;
+			swal({
+			  type: 'success',
+			  title: 'Your mail has been sent.',
+			  showConfirmButton: false,
+			  timer: 3000
+			});
+			document.getElementById("FullNameC").value="";
+			document.getElementById("EmailAddressC").value="";
+			document.getElementById("MobileNumberC").value="";
+			document.getElementById("MessageC").value="";
+		}
+	};
+	xhttp.open("POST", "Code/mailer.php", true);
+	xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xhttp.send("FullName="+FullName+"&EmailAddress="+EmailId+"&MobileNumber="+Mobile+"&Message="+Message);
+	xhttp.send();
+	}
+}
+
+function ValEmail(x)
+{
+		var atposition=x.indexOf("@");  
+		var dotposition=x.lastIndexOf(".");  
+		if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+		  return false;  
+		  }  
+		else
+			{
+				return true;
+			}
+}
+
+
+$(function() {
+   $('a[href*="#"]:not([href="#"])').click(function() {
+	 if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	   var target = $(this.hash);
+	   target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	   if (target.length) {
+		 $('html, body').animate({
+		   scrollTop: target.offset().top
+		 }, 1000);
+		 return false;
+	   }
+	 }
+   });
+});
